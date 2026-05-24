@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wsljoy"
+version = "0.1.0"
+description = "Mirror a Windows USB or Bluetooth game controller into WSL2 as a Linux joystick."
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+license = { text = "MIT" }
+authors = [{ name = "wsljoy contributors" }]
+dependencies = []
+
+[project.optional-dependencies]
+windows = ["hidapi>=0.14", "pygame>=2.5"]
+linux = []
+dev = ["pytest>=8"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[project.scripts]
+wsljoy-host = "wsljoy.cli:host_main"
+wsljoy-guest = "wsljoy.cli:guest_main"
+wsljoy-list = "wsljoy.cli:list_main"
+wsljoy-setup-uinput = "wsljoy.setup_uinput:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wsljoy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
