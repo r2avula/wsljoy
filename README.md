@@ -6,7 +6,63 @@
 
 Use Python 3.10. The project is pinned to Python 3.10 because the Windows controller dependencies have the most reliable wheel support there.
 
-## Windows Host
+## Installation From Released Package
+
+### Windows Host
+
+Install the Windows host package on Windows with the `windows` extra. This extra installs `hidapi` and `pygame` for controller access.
+
+With `pip`:
+
+```cmd
+py -3.10 -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install --upgrade pip
+python -m pip install "wsljoy[windows]"
+python -m wsljoy list
+python -m wsljoy host
+```
+
+With `uv pip`:
+
+```cmd
+uv venv --python 3.10
+.venv\Scripts\activate.bat
+uv pip install "wsljoy[windows]"
+python -m wsljoy list
+python -m wsljoy host
+```
+
+### WSL2 Guest
+
+Install the WSL2 guest package inside WSL2 Ubuntu. The `linux` extra is available for symmetry, but currently has no third-party dependencies.
+
+With `pip`:
+
+```bash
+python3.10 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install "wsljoy[linux]"
+python -m wsljoy setup-uinput
+python -m wsljoy guest
+```
+
+With `uv pip`:
+
+```bash
+uv venv --python 3.10
+. .venv/bin/activate
+uv pip install "wsljoy[linux]"
+python -m wsljoy setup-uinput
+python -m wsljoy guest
+```
+
+## Installation From Source
+
+Use these commands when developing from a cloned checkout.
+
+### Windows Host
 
 With `uv`:
 
@@ -28,7 +84,7 @@ python -m wsljoy list
 python -m wsljoy host
 ```
 
-## WSL2 Guest
+### WSL2 Guest
 
 With `uv`:
 

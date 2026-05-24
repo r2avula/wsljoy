@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "wsljoy"
-version = "0.1.1"
+version = "0.1.2"
 description = "Mirror a Windows USB or Bluetooth game controller into WSL2 as a Linux joystick."
 readme = "README.md"
 requires-python = ">=3.10,<3.11"
